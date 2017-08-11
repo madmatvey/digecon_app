@@ -1,0 +1,19 @@
+= form_for @amo_account do |f|
+  - if @amo_account.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@amo_account.errors.count, "error")} prohibited this amo_account from being saved:"
+      %ul
+        - @amo_account.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :usermail
+    = f.text_field :usermail
+  .field
+    = f.label :api_endpoint
+    = f.text_field :api_endpoint
+  .field
+    = f.label :api_key
+    = f.text_field :api_key
+  .actions
+    = f.submit 'Save'

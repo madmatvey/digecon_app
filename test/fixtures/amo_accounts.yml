@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  usermail: MyString
+  api_endpoint: MyString
+  api_key: MyString
+
+two:
+  usermail: MyString
+  api_endpoint: MyString
+  api_key: MyString

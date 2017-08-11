@@ -1,0 +1,2 @@
+class AmoAccount < ApplicationRecord
+end

@@ -1,0 +1,30 @@
+.container
+  .row
+    .col-md-6
+      .h1 Digecon amoCRM accounts
+
+  .row
+    .col-md-12
+      %table.table.table-hover
+        %thead
+          %tr
+            %th Usermail
+            %th Api endpoint
+            %th Api key
+            %th
+            %th
+            %th
+
+        %tbody
+          - @amo_accounts.each do |amo_account|
+            %tr
+              %td= amo_account.usermail
+              %td= amo_account.api_endpoint
+              %td= amo_account.api_key
+              %td= link_to 'Show', amo_account, class: "btn btn-xs btn-info"
+              %td= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_amo_account_path(amo_account), class: "btn btn-xs btn-warning"
+              %td= link_to  '<span class="glyphicon glyphicon-remove"></span>'.html_safe, amo_account, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-xs btn-danger"
+
+  %br
+
+  = link_to 'New Amo account', new_amo_account_path, class: "btn btn-primary"
