@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815084426) do
+ActiveRecord::Schema.define(version: 20170815132123) do
 
   create_table "amo_accounts", force: :cascade do |t|
     t.string   "usermail"
     t.string   "api_endpoint"
     t.string   "api_key"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.         "amo_data",     default: "{}", null: false
+    t.index ["amo_data"], name: "index_amo_accounts_on_amo_data"
   end
 
   create_table "users", force: :cascade do |t|
