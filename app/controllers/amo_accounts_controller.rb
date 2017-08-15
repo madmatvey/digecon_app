@@ -11,9 +11,7 @@ class AmoAccountsController < ApplicationController
   # GET /amo_accounts/1
   # GET /amo_accounts/1.json
   def show
-    @amo_client = Amorail::Client.new(usermail: @amo_account.usermail,
-                                      api_endpoint: @amo_account.api_endpoint,
-                                      api_key: @amo_account.api_key)
+    @amo_client = @amo_account.amo_client
 
   Amorail.with_client(@amo_client) do
     @props = Amorail.properties

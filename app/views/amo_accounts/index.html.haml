@@ -9,8 +9,10 @@
         %thead
           %tr
             %th Usermail
-            %th Api endpoint
-            %th Api key
+            %th subdomain
+            %th amo ID
+            %th Name
+            %th Users
             %th
             %th
             %th
@@ -19,8 +21,10 @@
           - @amo_accounts.each do |amo_account|
             %tr
               %td= amo_account.usermail
-              %td= amo_account.api_endpoint
-              %td= amo_account.api_key
+              %td= amo_account.amo_subdomain
+              %td= amo_account.amo_id
+              %td= amo_account.amo_name
+              %td= "#{amo_account.amo_users_count} из #{amo_account.amo_users_limit}"
               %td= link_to 'Show', amo_account, class: "btn btn-xs btn-info"
               %td= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_amo_account_path(amo_account), class: "btn btn-xs btn-warning"
               %td= link_to  '<span class="glyphicon glyphicon-remove"></span>'.html_safe, amo_account, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-xs btn-danger"
