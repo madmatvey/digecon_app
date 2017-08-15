@@ -11,13 +11,6 @@ class AmoAccountsController < ApplicationController
   # GET /amo_accounts/1
   # GET /amo_accounts/1.json
   def show
-    @amo_client = @amo_account.amo_client
-
-  Amorail.with_client(@amo_client) do
-    @props = Amorail.properties
-    # @leads = Amorail::Lead.find_by_query(responsible_user_id: "all")
-    end
-
   end
 
   # GET /amo_accounts/new
@@ -33,7 +26,7 @@ class AmoAccountsController < ApplicationController
   # POST /amo_accounts.json
   def create
     @amo_account = AmoAccount.new(amo_account_params)
-
+    @amo_account.import_data_from_amo
     respond_to do |format|
       if @amo_account.save
         format.html { redirect_to @amo_account, notice: 'Amo account was successfully created.' }
@@ -48,6 +41,7 @@ class AmoAccountsController < ApplicationController
   # PATCH/PUT /amo_accounts/1
   # PATCH/PUT /amo_accounts/1.json
   def update
+    @amo_account.import_data_from_amo
     respond_to do |format|
       if @amo_account.update(amo_account_params)
         format.html { redirect_to @amo_account, notice: 'Amo account was successfully updated.' }

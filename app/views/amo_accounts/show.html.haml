@@ -12,12 +12,12 @@
       %b Api key:
       = @amo_account.api_key
     %p
-      %b Some Property
-      = @props.data['users'].select {|user| user['group_id']==0}
+      %b Amo Data
+      = @amo_account.amo_data
 
-    %p
-      %b custom fields
-      = raw JSON.pretty_generate(@props.data) #.gsub(" ","&nbsp;") #['custom_fields']['leads'].select {|field| field['name']=="Назначен менеджер"}
+    -# %p
+    -#   %b custom fields
+    -#   = raw JSON.pretty_generate(@props.data) #.gsub(" ","&nbsp;") #['custom_fields']['leads'].select {|field| field['name']=="Назначен менеджер"}
 
 
     = link_to 'Edit', edit_amo_account_path(@amo_account)

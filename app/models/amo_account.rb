@@ -1,4 +1,5 @@
 class AmoAccount < ApplicationRecord
+  serialize :amo_data, JSON
 
   def amo_client
     Amorail::Client.new(usermail: usermail,
@@ -13,6 +14,11 @@ class AmoAccount < ApplicationRecord
       # @leads = Amorail::Lead.find_by_query(responsible_user_id: "all")
       end
     props
+  end
+
+  def import_data_from_amo
+    self.amo_data = amo_props.data
+    # self.save
   end
 
   def amo_id
