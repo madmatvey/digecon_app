@@ -1,0 +1,19 @@
+%footer.footer
+  .container
+    .table-responsive
+      %table.table
+        %tbody
+          %tr
+            %td
+              .p.text-left
+                = Time.now.year
+                = icon('copyright')
+                = link_to "DigEcon", root_path
+            %td
+              .p.text-center
+                = icon('phone-square')
+                8 (846) 215-01-04
+            %td
+              .p.text-right
+                = icon('envelope')
+                %a{:href => "mailto:#"} hello@digecon.ru

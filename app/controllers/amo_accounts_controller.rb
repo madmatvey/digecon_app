@@ -1,5 +1,6 @@
 class AmoAccountsController < ApplicationController
   before_action :set_amo_account, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /amo_accounts
   # GET /amo_accounts.json

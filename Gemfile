@@ -34,9 +34,10 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'amorail'
 gem 'meta_request' # потом убери в development
+gem 'devise'
 
 gem 'bootstrap-sass'
-gem 'font-awesome-sass', '~> 4.6.2'
+gem 'font-awesome-sass', '~> 4.7.0'
 gem 'simple_form'
 gem 'haml-rails'
 
