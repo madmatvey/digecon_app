@@ -1,23 +1,50 @@
 .container
   .row
     %p#notice= notice
-
     %p
       %b Usermail:
       = @amo_account.usermail
     %p
       %b Api endpoint:
       = @amo_account.api_endpoint
-    %p
-      %b Api key:
-      = @amo_account.api_key
-    %p
-      %b Amo Data
-      = @amo_account.amo_data
 
-    -# %p
-    -#   %b custom fields
-    -#   = raw JSON.pretty_generate(@props.data) #.gsub(" ","&nbsp;") #['custom_fields']['leads'].select {|field| field['name']=="Назначен менеджер"}
+  .row
+    .col-md-12
+      %table.table.table-hover
+        %thead
+          %tr
+            %th Аккаунт
+            %th ID
+            %th оплачен до
+            %th Отделов
+            %th Пользователей
+
+
+
+        %tbody
+          %tr
+            %td= @amo_account.amo_data['name']
+            %td= @amo_account.amo_data['id']
+            %td= Time.at(@amo_account.amo_data['paid_till']) if @amo_account.amo_data['paid_till'] != false
+            %td= @amo_account.amo_data['groups'].count
+            %td= "#{@amo_account.amo_data['users'].count} из #{@amo_account.amo_data['limits']['users_count']}"
+
+.row
+  .col-md-12
+    %table.table.table-hover
+      %thead
+        %tr
+          - @amo_account.amo_data['groups'].each do |group|
+            %th= "#{group['name']}\n #{group['id']}"
+      %tbody
+        
+
+    %b Amo Data
+    = @amo_account.amo_data
+
+  -# %p
+  -#   %b custom fields
+  -#   = raw JSON.pretty_generate(@props.data) #.gsub(" ","&nbsp;") #['custom_fields']['leads'].select {|field| field['name']=="Назначен менеджер"}
 
 
     = link_to 'Edit', edit_amo_account_path(@amo_account)
