@@ -22,22 +22,22 @@ class AmoAccount < ApplicationRecord
   end
 
   def amo_id
-    amo_props.data["id"]
+    self.amo_data["id"]
   end
 
   def amo_name
-    amo_props.data["name"]
+    self.amo_data["name"]
   end
 
   def amo_subdomain
-    amo_props.data["subdomain"]
+    self.amo_data["subdomain"]
   end
 
   def amo_users_count
-    amo_props.data['users'].count
+    self.amo_data['users'].count
   end
 
   def amo_users_limit
-    amo_props.data['limits']['users_count']
+    self.amo_data['limits']['users_count']
   end
 end
