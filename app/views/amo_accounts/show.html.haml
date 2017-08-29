@@ -25,7 +25,7 @@
           %tr
             %td= @amo_account.amo_data['name']
             %td= @amo_account.amo_data['id']
-            %td= Time.at(@amo_account.amo_data['paid_till']) if @amo_account.amo_data['paid_till'] != false
+            %td= Time.at(@amo_account.amo_data['paid_till']) if @amo_account.amo_data['paid_till'] != nil
             %td= @amo_account.amo_data['groups'].count
             %td= "#{@amo_account.amo_data['users'].count} из #{@amo_account.amo_data['limits']['users_count']}"
 
@@ -37,7 +37,7 @@
           - @amo_account.amo_data['groups'].each do |group|
             %th= "#{group['name']}\n #{group['id']}"
       %tbody
-        
+
 
     %b Amo Data
     = @amo_account.amo_data
